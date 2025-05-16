@@ -1,0 +1,58 @@
+{
+  "name": "lelwel",
+  "displayName": "lelwel",
+  "description": "lelwel language server",
+  "author": "Daniel Pfister",
+  "publisher": "0x2a-42",
+  "license": "MIT",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0x2a-42/vscode-lelwel"
+  },
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [
+    "Programming Languages"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+      "languages": [
+        {
+          "id": "lelwel",
+          "aliases": [
+            "lelwel",
+            "lelwel"
+          ],
+          "extensions": [
+            ".llw"
+          ],
+          "configuration": "./language-configuration.json"
+        }
+      ],
+      "grammars": [
+        {
+          "language": "lelwel",
+          "scopeName": "source.lelwel",
+          "path": "./syntaxes/lelwel.tmLanguage.json"
+        }
+      ]
+    },
+    "activationEvents": [
+      "onLanguage:lelwel"
+    ],
+    "scripts": {
+      "vscode:prepublish": "npm run compile",
+      "compile": "tsc -p ./",
+      "watch": "tsc -w -p ./"
+    },
+    "dependencies": {
+      "vscode-languageclient": "^7.0.0"
+    },
+    "devDependencies": {
+      "@types/node": "^12.12.0",
+      "@types/vscode": "^1.54.0",
+      "typescript": "^4.2.2"
+    }
+}

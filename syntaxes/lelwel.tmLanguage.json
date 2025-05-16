@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "lelwel",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#linecomments"
+    },
+    {
+      "include": "#blockcomments"
+    },
+    {
+      "include": "#actions"
+    },
+    {
+      "include": "#predicates"
+    },
+    {
+      "include": "#operators"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [{
+        "name": "keyword.control.lelwel",
+        "match": "\\b(token|start|right)\\b"
+      }]
+    },
+    "strings": {
+      "name": "string.quoted.single.lelwel",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lelwel",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "linecomments": {
+      "name": "comment.line.lelwel",
+      "match": "//.*"
+    },
+    "blockcomments": {
+      "name": "comment.block.lelwel",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+    "actions": {
+      "name": "constant.numeric.lelwel",
+      "match": "#\\d+"
+    },
+    "predicates": {
+      "name": "support.class.lelwel",
+      "match": "\\?\\d+"
+    },
+    "operators": {
+      "name": "keyword.control.lelwel",
+      "match": "\\*|\\+|;|/|\\(|\\)|\\[|\\]|\\||:|\\[\\]"
+    }
+  },
+  "scopeName": "source.lelwel"
+}

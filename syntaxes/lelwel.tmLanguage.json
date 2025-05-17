@@ -26,10 +26,12 @@
   ],
   "repository": {
     "keywords": {
-      "patterns": [{
-        "name": "keyword.control.lelwel",
-        "match": "\\b(token|start|right)\\b"
-      }]
+      "patterns": [
+        {
+          "name": "keyword.control.lelwel",
+          "match": "\\b(token|start|right|skip)\\b"
+        }
+      ]
     },
     "strings": {
       "name": "string.quoted.single.lelwel",

@@ -8,7 +8,7 @@ import {
 
 let client: LanguageClient;
 
-export function activate(context: ExtensionContext) {
+export function activate(_context: ExtensionContext) {
   let serverOptions: ServerOptions = {
     run: { command: "lelwel-ls" },
     debug: { command: "lelwel-ls" },

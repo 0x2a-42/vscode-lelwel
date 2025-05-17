@@ -1,28 +1,26 @@
-import * as path from 'path';
-import { ExtensionContext } from 'vscode';
+import { ExtensionContext } from "vscode";
 
 import {
   LanguageClient,
   LanguageClientOptions,
-  ServerOptions
-} from 'vscode-languageclient/node';
-
+  ServerOptions,
+} from "vscode-languageclient/node";
 
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
   let serverOptions: ServerOptions = {
-    run: { command: 'lelwel-ls' },
-    debug: { command: 'lelwel-ls' }
+    run: { command: "lelwel-ls" },
+    debug: { command: "lelwel-ls" },
   };
 
   let clientOptions: LanguageClientOptions = {
-    documentSelector: [{ scheme: 'file', language: 'lelwel' }],
+    documentSelector: [{ scheme: "file", language: "lelwel" }],
   };
 
   client = new LanguageClient(
-    'lelwelLanguageServer',
-    'lelwel language server',
+    "lelwelLanguageServer",
+    "lelwel language server",
     serverOptions,
     clientOptions
   );

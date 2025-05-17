@@ -21,6 +21,6 @@ npm install
 npm run compile
 ```
 
-Then open `src/extension.ts` and press F5 (or select \*Run → Start Debugging\*) to launch a new \*Extension Development Host\* window.
+Then open `src/extension.ts` and press F5 (or select **Run → Start Debugging**) to launch a new **Extension Development Host** window.
 
 Open a .llw file in that window to test the extension.

@@ -1,28 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "lelwel",
+  "scopeName": "source.lelwel",
   "patterns": [
-    {
-      "include": "#keywords"
-    },
-    {
-      "include": "#strings"
-    },
-    {
-      "include": "#linecomments"
-    },
-    {
-      "include": "#blockcomments"
-    },
-    {
-      "include": "#actions"
-    },
-    {
-      "include": "#predicates"
-    },
-    {
-      "include": "#operators"
-    }
+    { "include": "#keywords" },
+    { "include": "#strings" },
+    { "include": "#comments" },
+    { "include": "#rule" },
+    { "include": "#operator" },
+    { "include": "#semicolon" },
+    { "include": "#semantic-predicate" },
+    { "include": "#semantic-action" },
+    { "include": "#semantic-assertion" },
+    { "include": "#node-marker" },
+    { "include": "#node-creation" },
+    { "include": "#node-rename" },
+    { "include": "#identifier" }
   ],
   "repository": {
     "keywords": {
@@ -44,27 +37,80 @@
         }
       ]
     },
-    "linecomments": {
-      "name": "comment.line.lelwel",
-      "match": "//.*"
+    "comments": {
+      "patterns": [
+        {
+          "begin": "///",
+          "end": "\\n",
+          "name": "comment.line.documentation.lelwel"
+        },
+        {
+          "begin": "//",
+          "end": "\\n",
+          "name": "comment.line.double-slash.lelwel"
+        },
+        {
+          "name": "comment.block.lelwel",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
     },
-    "blockcomments": {
-      "name": "comment.block.lelwel",
-      "begin": "/\\*",
-      "end": "\\*/"
+    "rule": {
+      "name": "variable.other.constant.lelwel",
+      "match": "[a-zA-Z][a-zA-Z_0-9]*(\\^)?[ \\t\\n\\f]*(:)",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.lelwel"
+        },
+        "2": {
+          "name": "keyword.operator.lelwel"
+        }
+      }
     },
-    "actions": {
+    "operator": {
+      "patterns": [
+        {
+          "name": "keyword.operator.lelwel",
+          "match": "[\\+\\*\\|\\(\\)\\[\\]=]"
+        },
+        {
+          "name": "entity.name.type.lelwel",
+          "match": "\\^"
+        }
+      ]
+    },
+    "semicolon": {
+      "name": "punctuation.terminator.statement.lelwel",
+      "match": ";"
+    },
+    "semantic-predicate": {
       "name": "constant.numeric.lelwel",
-      "match": "#\\d+"
+      "match": "\\?([0-9]+|t)"
     },
-    "predicates": {
-      "name": "support.class.lelwel",
-      "match": "\\?\\d+"
+    "semantic-action": {
+      "name": "constant.numeric.lelwel",
+      "match": "#[0-9]+"
     },
-    "operators": {
-      "name": "keyword.control.lelwel",
-      "match": "\\*|\\+|;|/|\\(|\\)|\\[|\\]|\\||:|\\[\\]"
+    "semantic-assertion": {
+      "name": "constant.numeric.lelwel",
+      "match": "![0-9]+"
+    },
+    "node-marker": {
+      "name": "entity.name.type.lelwel",
+      "match": "<[0-9]+"
+    },
+    "node-creation": {
+      "name": "entity.name.type.lelwel",
+      "match": "[0-9]*>([a-zA-Z][a-zA-Z_0-9]*)?"
+    },
+    "node-rename": {
+      "name": "storage.type.annotation.lelwel",
+      "match": "@([a-zA-Z][a-zA-Z_0-9]*)?"
+    },
+    "identifier": {
+      "name": "variable.other.lelwel",
+      "match": "[a-zA-Z][a-zA-Z_0-9]*"
     }
-  },
-  "scopeName": "source.lelwel"
+  }
 }

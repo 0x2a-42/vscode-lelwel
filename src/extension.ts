@@ -22,7 +22,7 @@ export function activate(_context: ExtensionContext) {
     "lelwelLanguageServer",
     "lelwel language server",
     serverOptions,
-    clientOptions
+    clientOptions,
   );
 
   client.start();

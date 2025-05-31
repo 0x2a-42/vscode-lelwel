@@ -8,7 +8,7 @@ import {
 
 let client: LanguageClient;
 
-export function activate(_context: ExtensionContext) {
+export async function activate(_context: ExtensionContext) {
   let serverOptions: ServerOptions = {
     run: { command: "lelwel-ls" },
     debug: { command: "lelwel-ls" },
@@ -25,7 +25,7 @@ export function activate(_context: ExtensionContext) {
     clientOptions,
   );
 
-  client.start();
+  await client.start();
 }
 
 export function deactivate(): Thenable<void> | undefined {

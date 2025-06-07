@@ -43,16 +43,14 @@ async function startLsp(context: ExtensionContext) {
   await client?.stop();
 
   let serverOptions: ServerOptions;
-  let clientOptions: LanguageClientOptions;
+  let clientOptions: LanguageClientOptions = {
+    documentSelector: [{ scheme: "file", language: "lelwel" }],
+  };
 
   if (useNativeLelwel()) {
     serverOptions = {
       run: { command: "lelwel-ls" },
       debug: { command: "lelwel-ls" },
-    };
-
-    clientOptions = {
-      documentSelector: [{ scheme: "file", language: "lelwel" }],
     };
   } else {
     const wasm: Wasm = await Wasm.load();
@@ -66,10 +64,7 @@ async function startLsp(context: ExtensionContext) {
       const filename = Uri.joinPath(
         context.extensionUri,
         "server",
-        "target",
-        "wasm32-wasip1-threads",
-        "release",
-        "server.wasm",
+        "lelwel-ls.wasm",
       );
       const bits = await workspace.fs.readFile(filename);
       const module = await WebAssembly.compile(bits);
@@ -88,11 +83,8 @@ async function startLsp(context: ExtensionContext) {
       return startServer(process);
     };
 
-    clientOptions = {
-      documentSelector: [{ language: "plaintext" }],
-      outputChannel: channel,
-      uriConverters: createUriConverters(),
-    };
+    clientOptions.outputChannel = channel;
+    clientOptions.uriConverters = createUriConverters();
   }
 
   client = new LanguageClient(

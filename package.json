@@ -59,6 +59,9 @@
     "lint": "eslint src",
     "test": "vscode-test"
   },
+  "extensionDependencies": [
+    "ms-vscode.wasm-wasi-core"
+  ],
   "dependencies": {
     "vscode-languageclient": "^10.0.0-next.12",
     "@vscode/wasm-wasi-lsp": "^0.1.0-pre.8",

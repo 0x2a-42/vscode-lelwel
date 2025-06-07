@@ -38,7 +38,18 @@
         "scopeName": "source.lelwel",
         "path": "./syntaxes/lelwel.tmLanguage.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Lelwel",
+      "type": "object",
+      "properties": {
+        "lelwel.nativeLsp": {
+          "type": "boolean",
+          "default": false,
+          "description": "Connect to a 'lelwel-ls' binary, instead of using the embedded language server."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -49,7 +60,9 @@
     "test": "vscode-test"
   },
   "dependencies": {
-    "vscode-languageclient": "^9.0.1"
+    "vscode-languageclient": "^10.0.0-next.12",
+    "@vscode/wasm-wasi-lsp": "^0.1.0-pre.8",
+    "@vscode/wasm-wasi": "^1.0.1"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",

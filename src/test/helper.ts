@@ -18,8 +18,12 @@ export async function activate(docUri: vscode.Uri) {
   // The extensionId is `publisher.name` from package.json
   const ext = vscode.extensions.getExtension("0x2a-42.lelwel")!;
   await ext.activate();
-  doc = await vscode.workspace.openTextDocument(docUri);
-  editor = await vscode.window.showTextDocument(doc);
+  try {
+    doc = await vscode.workspace.openTextDocument(docUri);
+    editor = await vscode.window.showTextDocument(doc);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 export const getDocPath = (p: string) => {

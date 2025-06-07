@@ -11,15 +11,15 @@ npm run compile
 
 ## Get up and running straight away
 
-* Press `F5` to open a new window with your extension loaded.
+* Press `F5` to open a new window with the extension loaded.
 * Open a .llw file in that window to test the extension.
-* Set breakpoints in your code inside `src/extension.ts` to debug your extension.
-* Find output from your extension in the debug console.
+* Set breakpoints in the code inside `src/extension.ts` to debug the extension.
+* Find output from the extension in the debug console.
 
 ## Make changes
 
 * You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
-* You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes.
+* You can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with the extension to load your changes.
 
 ## Run tests
 
@@ -29,4 +29,4 @@ npm run compile
 * See the output of the test result in the Test Results view.
 * Make changes to `src/test/extension.test.ts` or create new test files inside the `test` folder.
   * The provided test runner will only consider files matching the name pattern `**.test.ts`.
-  * You can create folders inside the `test` folder to structure your tests any way you want.
+  * You can create folders inside the `test` folder to structure the tests any way you want.

@@ -71,7 +71,7 @@ async function startLsp(context: ExtensionContext) {
       const process = await wasm.createProcess(
         "lelwel-ls",
         module,
-        { initial: 160, maximum: 160, shared: true },
+        { initial: 160, maximum: 2000, shared: true },
         options,
       );
 

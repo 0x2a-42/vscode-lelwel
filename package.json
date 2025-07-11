@@ -17,7 +17,7 @@
     "Programming Languages"
   ],
   "activationEvents": [],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "languages": [
       {
@@ -52,10 +52,11 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
+    "vscode:prepublish": "npm run compile -- --minify",
+    "compile": "esbuild ./src/extension.ts --bundle --sourcemap --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "npm run compile -- --watch",
+    "pretest": "npm run type-check && npm run compile && npm run lint",
+    "type-check": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test"
   },
@@ -63,9 +64,9 @@
     "ms-vscode.wasm-wasi-core"
   ],
   "dependencies": {
-    "vscode-languageclient": "^10.0.0-next.12",
+    "@vscode/wasm-wasi": "^1.0.1",
     "@vscode/wasm-wasi-lsp": "^0.1.0-pre.8",
-    "@vscode/wasm-wasi": "^1.0.1"
+    "vscode-languageclient": "^10.0.0-next.12"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -75,6 +76,7 @@
     "@typescript-eslint/parser": "^8.31.1",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.6",
     "eslint": "^9.25.1",
     "prettier": "3.5.3",
     "typescript": "^5.8.3"

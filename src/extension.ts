@@ -71,6 +71,9 @@ async function startLsp(context: ExtensionContext) {
       const process = await wasm.createProcess(
         "lelwel-ls",
         module,
+        // Must correspond to the Rust `--initial-memory` and `--max-memory` flags
+        // e.g. --initial-memory=10485760 == 160 (multiplied by 65536)
+        // See CONTRIBUTING.md
         { initial: 160, maximum: 2000, shared: true },
         options,
       );

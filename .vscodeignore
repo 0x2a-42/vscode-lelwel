@@ -1,7 +1,9 @@
 .vscode/**
 .vscode-test/**
 src/**
-out/test/*
+out/**
+node_modules/**
+dist/extension.js.map
 testFixture/*
 .gitignore
 **/tsconfig.json

@@ -52,7 +52,8 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile -- --minify",
+    "vscode:prepublish": "npm run build",
+    "build": "npm run compile -- --minify && mkdir -p server && cd lelwel && cargo rustc --features=lsp --bin=lelwel-ls --release --target wasm32-wasip1-threads -- -Clink-arg=--initial-memory=10485760 -Clink-arg=--max-memory=131072000 && cp target/wasm32-wasip1-threads/release/lelwel-ls.wasm ../server/ && cd ..",
     "compile": "esbuild ./src/extension.ts --bundle --sourcemap --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
     "watch": "npm run compile -- --watch",
     "pretest": "npm run type-check && npm run compile && npm run lint",

@@ -1,0 +1,3 @@
+[submodule "lelwel"]
+	path = lelwel
+	url = https://github.com/0x2a-42/lelwel.git

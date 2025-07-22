@@ -4,8 +4,10 @@ src/**
 out/**
 node_modules/**
 dist/extension.js.map
+lelwel
 testFixture/*
 .gitignore
+.gitmodules
 **/tsconfig.json
 **/eslint.config.mjs
 **/*.map
